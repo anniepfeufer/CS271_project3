@@ -92,3 +92,17 @@ template <typename T>
 int HashTable<T>::hashFunc(int key){
     return key%m;
 }
+
+template <typename T>
+bool HashTable<T>::member(T data, int key){
+    slot= hashFunc(key)
+    found=false;
+    Element *curr=HT[slot].head;
+    while found==false && curr!=nullptr{
+        if curr.key==key && curr.data==data{
+            found=true
+        }
+        curr=curr.next;
+    }
+    return found;
+}
