@@ -76,11 +76,11 @@ class HashTable
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
-    item=Element(data, key);
-    slot=hashFunc(key);
+    Element item=Element(data, key);
+    int slot=hashFunc(key);
     if HT[slot].head!= nullptr{
-        item.next=HT[slot].head;
-        item.next.prev=&item;
+        item->next=HT[slot]->head;
+        item->next->prev=&item;
     }
     else{
         HT[slot].tail=&item;
@@ -88,7 +88,7 @@ void HashTable<T>::insert(T data, int key){
     HT[slot].head=&item;
 }
 template <typename T>
- void Hashtable<T>::remove(int key) {
+ void HashTable<T>::remove(int key) {
         int index = hash(key);
         Element* currentElement = table[index];
         while (currentElement != nullptr) {
@@ -106,6 +106,8 @@ template <typename T>
             }
             currentElement = currentElement->next;
         }
+ }
+
 template <typename T>
 int HashTable<T>::hashFunc(int key){
     return key%m;
@@ -113,14 +115,14 @@ int HashTable<T>::hashFunc(int key){
 
 template <typename T>
 bool HashTable<T>::member(T data, int key){
-    slot= hashFunc(key)
-    found=false;
-    Element *curr=HT[slot].head;
+    int slot= hashFunc(key)
+    bool found=false;
+    Element *curr=HT[slot]->head;
     while found==false && curr!=nullptr{
         if curr.key==key && curr.data==data{
             found=true
         }
-        curr=curr.next;
+        curr=curr->next;
     }
     return found; 
 }
