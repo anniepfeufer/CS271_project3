@@ -87,3 +87,8 @@ void HashTable<T>::insert(T data, int key){
     }
     HT[slot].head=&item;
 }
+
+template <typename T>
+int HashTable<T>::hashFunc(int key){
+    return key%m;
+}
