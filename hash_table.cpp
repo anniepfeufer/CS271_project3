@@ -79,8 +79,8 @@ void HashTable<T>::insert(T data, int key){
     Element<T> item=Element<T>(data, key);
     int slot=hashFunc(key);
     if (HT[slot].head!= nullptr){
-        item.next=HT[slot]->head;
-        item.next.prev=&item;
+        item.next=HT[slot].head;
+        item.next->prev=&item;
     }
     else{
         HT[slot].tail=&item;
@@ -117,7 +117,7 @@ template <typename T>
 bool HashTable<T>::member(T data, int key){
     int slot= hashFunc(key);
     bool found=false;
-    Element<T> *curr=HT[slot]->head;
+    Element<T> *curr=HT[slot].head;
     while (found==false && curr!=nullptr){
         if (curr->key==key && curr->data==data){
             found=true;
@@ -132,7 +132,7 @@ string HashTable<T>::to_string(void){
     string HTstring;
     for (int i=0; i<m; i++){
         HTstring= HTstring + std::to_string(i)+ ":";
-        Element<T>* curr=HT[i]->head;
+        Element<T>* curr=HT[i].head;
         while (curr!= nullptr){
             T d=curr->data;
             int k=curr->key;

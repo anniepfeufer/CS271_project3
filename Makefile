@@ -13,5 +13,5 @@ example_test.o: example_test.cpp hash_table.o
 	g++ -c example_test.cpp
 
 hash_table.o: hash_table.cpp 
-	g++ hash_table.cpp
+	g++ -c hash_table.cpp
 
