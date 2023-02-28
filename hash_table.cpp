@@ -104,5 +104,5 @@ bool HashTable<T>::member(T data, int key){
         }
         curr=curr.next;
     }
-    return found;
+    return found; 
 }
