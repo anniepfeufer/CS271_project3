@@ -61,7 +61,7 @@ class HashTable
     public:
     HashTable(){
         m=0;
-        HT==new LinkedList<T>[m];
+        HT=new LinkedList<T>[m];
     }
     HashTable(int slots){
         m= slots;
@@ -79,8 +79,8 @@ void HashTable<T>::insert(T data, int key){
     Element<T> item=Element(data, key);
     int slot=hashFunc(key);
     if (HT[slot].head!= nullptr){
-        item->next=HT[slot]->head;
-        item->next->prev=&item;
+        item.next=HT[slot]->head;
+        item.next.prev=&item;
     }
     else{
         HT[slot].tail=&item;
