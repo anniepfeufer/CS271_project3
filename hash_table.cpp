@@ -87,7 +87,25 @@ void HashTable<T>::insert(T data, int key){
     }
     HT[slot].head=&item;
 }
-
+template <typename T>
+ void Hashtable<T>::remove(int key) {
+        int index = hash(key);
+        Element* currentElement = table[index];
+        while (currentElement != nullptr) {
+            if (currentElement->key == key) {
+                if (currentElement->prev == nullptr) {
+                    table[index] = currentElement->next;
+                } else {
+                    currentElement->prev->next = currentElement->next;
+                }
+                if (currentElement->next != nullptr) {
+                    currentElement->next->prev = currentElement->prev;
+                }
+                delete currentElement;
+                return;
+            }
+            currentElement = currentElement->next;
+        }
 template <typename T>
 int HashTable<T>::hashFunc(int key){
     return key%m;
