@@ -6,7 +6,8 @@ test: example_test.o
 usecase: main.o
 	g++ -o usecase main.o
 
-example_test.o: example_test.cpp hash_table.cpp
+example_test.o: example_test.cpp hash_table.o
 	g++ -c example_test.cpp
 
-main.o: 
+hash_table.o: hash_table.cpp
+	g++ hash_table.cpp
