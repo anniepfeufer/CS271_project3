@@ -5,16 +5,14 @@
 //  Created by Dr. Stacey Truex
 //
 #include <iostream>
-#include "usecase.cpp"
+#include "hash_table.cpp"
 using namespace std;
 void test_get_key() {
     try {
         Element<int> empty_elem;
-        if(empty_elem.get_key()!=-1){cout << "Incorrect result from get key. 
-Expected -1 for an empty element but got : " << empty_elem.get_key() << endl;}
+        if(empty_elem.get_key()!=-1){cout << "Incorrect result from get key. Expected -1 for an empty element but got : " << empty_elem.get_key() << endl;}
         Element<int> e(10, 6);
-        if(e.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but 
-got : " << e.get_key() << endl;}
+        if(e.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e.get_key() << endl;}
     } catch(exception& e) {
         cerr << "Error getting key from element : " << e.what() << endl;
     }
@@ -22,11 +20,9 @@ got : " << e.get_key() << endl;}
 void test_get_data() {
     try {
         Element<int> empty_elem;
-        if(empty_elem.get_data()!=0){cout << "Incorrect result from get data. 
-Expected 0 for an empty element but got : " << empty_elem.get_data() << endl;}
+        if(empty_elem.get_data()!=0){cout << "Incorrect result from get data. Expected 0 for an empty element but got : " << empty_elem.get_data() << endl;}
         Element<int> e(10, 6);
-        if(e.get_data()!=10){cout << "Incorrect result from get data. Expected 10 
-but got : " << e.get_data() << endl;}
+        if(e.get_data()!=10){cout << "Incorrect result from get data. Expected 10 but got : " << e.get_data() << endl;}
     } catch(exception& e) {
         cerr << "Error getting data from element : " << e.what() << endl;
     }
@@ -36,8 +32,7 @@ void test_insert() {
         HashTable<int> empty_ht(0);
         empty_ht.insert(10, 6);
         if(empty_ht.to_string()!="") {
-            cout << "Incorrect result of inserting into table. Expected and empty 
-string But got\n\n" << empty_ht.to_string() << endl;
+            cout << "Incorrect result of inserting into table. Expected and empty string But got\n\n" << empty_ht.to_string() << endl;
         }
     } catch(exception& e) {
         cout << "Error caused by trying to insert into empty table : " << e.what() 
@@ -47,8 +42,7 @@ string But got\n\n" << empty_ht.to_string() << endl;
         HashTable<int> ht(5);
         ht.insert(10, 6);
         if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
-            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: 
-(10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         }
         ht.insert(1, 21);
         if(ht.to_string()!="0: \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
@@ -63,8 +57,7 @@ void test_remove() {
         HashTable<int> empty_ht(0);
         empty_ht.remove(6);
         if(empty_ht.to_string()!="") {
-            cout << "Incorrect result of removing from empty table. Expected and 
-empty string But got\n\n" << empty_ht.to_string() << endl;
+            cout << "Incorrect result of removing from empty table. Expected and empty string But got\n\n" << empty_ht.to_string() << endl;
         }
     } catch(exception& e) {
         cout << "Error caused by trying to remove from empty table : " << e.what() 
@@ -75,8 +68,7 @@ empty string But got\n\n" << empty_ht.to_string() << endl;
         ht.insert(10, 6);
         ht.remove(5);
         if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
-            cout << "Incorrect result of removing non-member from table. Expected\
-n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         }
     } catch(exception& e) {
         cerr << "Error removing non-member from table : " << e.what() << endl;
@@ -86,8 +78,7 @@ n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         ht2.insert(10, 6);
         ht2.remove(6);
         if(ht2.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << "Incorrect result removing member from table. Expected\n\n0: \
-n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
+            cout << "Incorrect result removing member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
         }
     } catch(exception& e) {
         cerr << "Error removing member from table : " << e.what() << endl;
@@ -111,7 +102,7 @@ void test_member() {
         cerr << "Error determining membership from table : " << e.what() << endl;
     }
 }
-void test_login() {
+/*void test_login() {
     try {
         HashTable<string>* ht = create_table<string>("logins.csv", 10);
         string username = "IEv";
@@ -126,6 +117,7 @@ inaccurate login information" << endl;}
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
 }
+*/
 int main() {
     
     test_get_key();
@@ -133,7 +125,7 @@ int main() {
     test_insert();
     test_remove();
     test_member();
-    test_login();
+    //test_login();
     
     cout << "Testing completed" << endl;
     

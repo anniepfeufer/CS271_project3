@@ -17,7 +17,7 @@ class Element
     
     Element(T val, int k){
         data= val;
-        key=k
+        key=k;
         next = nullptr; 
         prev = nullptr;}
     int get_key(){
@@ -47,7 +47,7 @@ class LinkedList
     LinkedList(Element<T> item){
         len=1;
         head= &item;
-        tail= &item
+        tail= &item;
     }
 };
 
@@ -61,11 +61,11 @@ class HashTable
     public:
     HashTable(){
         m=0;
-        HT==new LinkedList<T>[m]
+        HT==new LinkedList<T>[m];
     }
     HashTable(int slots){
         m= slots;
-        HT==new LinkedList<T>[m]
+        HT==new LinkedList<T>[m];
     }
     void insert(T data, int key);
     void remove(int key);
@@ -76,7 +76,7 @@ class HashTable
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
-    Element item=Element(data, key);
+    Element<T> item=Element(data, key);
     int slot=hashFunc(key);
     if (HT[slot].head!= nullptr){
         item->next=HT[slot]->head;
@@ -89,12 +89,12 @@ void HashTable<T>::insert(T data, int key){
 }
 template <typename T>
  void HashTable<T>::remove(int key) {
-        int index = hash(key);
-        Element* currentElement = table[index];
+        int index = hashFunc(key);
+        Element<T>* currentElement = HT[index];
         while (currentElement != nullptr) {
             if (currentElement->key == key) {
                 if (currentElement->prev == nullptr) {
-                    table[index] = currentElement->next;
+                    HT[index] = currentElement->next;
                 } else {
                     currentElement->prev->next = currentElement->next;
                 }
@@ -117,7 +117,7 @@ template <typename T>
 bool HashTable<T>::member(T data, int key){
     int slot= hashFunc(key);
     bool found=false;
-    Element *curr=HT[slot]->head;
+    Element<T> *curr=HT[slot]->head;
     while (found==false && curr!=nullptr){
         if (curr.key==key && curr.data==data){
             found=true;
@@ -130,9 +130,9 @@ bool HashTable<T>::member(T data, int key){
 template <typename T>
 string HashTable<T>::to_string(void){
     string HTstring;
-    for (int i=0, i<m, i++){
+    for (int i=0;, i<m;, i++;){
         HTstring= HTstring + std::to_string(i)+ ":";
-        Element* curr=HT[i]->head;
+        Element<T>* curr=HT[i]->head;
         while (curr!= nullptr){
             T d=curr.data;
             int k=curr.key;
