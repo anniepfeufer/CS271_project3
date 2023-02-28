@@ -34,12 +34,11 @@ class Element
 template<typename T>
 class LinkedList
 {
-    private:
+    public:
     int len;
     Element<T> *head;
     Element<T> *tail;
 
-    public:
     LinkedList(){
         len=0;
         head= nullptr;
