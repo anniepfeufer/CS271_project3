@@ -1,5 +1,8 @@
 all: test usecase 
 
+usecase.o: usecase.cpp hash_table.o
+	g++ usecase.cpp
+
 main.o: main.cpp hash_table.o
 	g++ main.cpp
 
