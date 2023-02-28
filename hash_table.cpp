@@ -19,7 +19,7 @@ class Element
         data= val;
         key=k
         next = nullptr; 
-        prev=nullptr;}
+        prev = nullptr;}
     int get_key(){
         return key;
     }
@@ -37,15 +37,18 @@ class LinkedList
     private:
     int len;
     Element<T> *head;
+    Element<T> *tail;
 
     public:
     LinkedList(){
         len=0;
         head= nullptr;
+        tail= nullptr;
     }
     LinkedList(Element<T> item){
         len=1;
         head= &item;
+        tail= &item
     }
 };
 
@@ -68,10 +71,20 @@ class HashTable
     void insert(T data, int key);
     void remove(int key);
     bool member(T data, int key);
+    int hashFunc(int key);
     
 };
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
-
+    item=Element(data, key);
+    slot=hashFunc(key);
+    if HT[slot].head!= nullptr{
+        item.next=HT[slot].head;
+        item.next.prev=&item;
+    }
+    else{
+        HT[slot].tail=&item;
+    }
+    HT[slot].head=&item;
 }
