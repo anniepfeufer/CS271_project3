@@ -71,14 +71,14 @@ class HashTable
     void remove(int key);
     bool member(T data, int key);
     int hashFunc(int key);
-    
+    string to_string(void);
 };
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
     Element item=Element(data, key);
     int slot=hashFunc(key);
-    if HT[slot].head!= nullptr{
+    if (HT[slot].head!= nullptr){
         item->next=HT[slot]->head;
         item->next->prev=&item;
     }
@@ -115,14 +115,31 @@ int HashTable<T>::hashFunc(int key){
 
 template <typename T>
 bool HashTable<T>::member(T data, int key){
-    int slot= hashFunc(key)
+    int slot= hashFunc(key);
     bool found=false;
     Element *curr=HT[slot]->head;
-    while found==false && curr!=nullptr{
-        if curr.key==key && curr.data==data{
-            found=true
+    while (found==false && curr!=nullptr){
+        if (curr.key==key && curr.data==data){
+            found=true;
         }
         curr=curr->next;
     }
     return found; 
+}
+
+template <typename T>
+string HashTable<T>::to_string(void){
+    string HTstring;
+    for (int i=0, i<m, i++){
+        HTstring= HTstring + std::to_string(i)+ ":";
+        Element* curr=HT[i]->head;
+        while (curr!= nullptr){
+            T d=curr.data;
+            int k=curr.key;
+            HTstring=HTstring + "(" +std::to_string(d)+", "+std::to_string(k)+")";
+            curr=curr->next;
+        }
+        if (i!=m-1){HTstring=HTstring+ "\n";}
+    }
+    return HTstring;
 }
