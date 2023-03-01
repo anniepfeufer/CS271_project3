@@ -49,6 +49,11 @@ class LinkedList
         head= &item;
         tail= &item;
     }
+    LinkedList operator=(Element<T> item){
+        len=1;
+        head=&item;
+        tail=&item;
+    }
 };
 
 template<typename T>
@@ -72,6 +77,10 @@ class HashTable
     bool member(T data, int key);
     int hashFunc(int key);
     string to_string(void);
+
+    ~HashTable(){
+        delete [] HT;
+    }
 };
 
 template <typename T>
@@ -90,11 +99,11 @@ void HashTable<T>::insert(T data, int key){
 template <typename T>
  void HashTable<T>::remove(int key) {
         int index = hashFunc(key);
-        Element<T>* currentElement = HT[index];
+        Element<T>* currentElement = HT[index].head;
         while (currentElement != nullptr) {
             if (currentElement->key == key) {
                 if (currentElement->prev == nullptr) {
-                    HT[index] = currentElement->next;
+                    HT[index].head = currentElement->next;
                 } else {
                     currentElement->prev->next = currentElement->next;
                 }
