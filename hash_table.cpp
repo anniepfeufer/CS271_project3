@@ -1,4 +1,20 @@
+//Class implementation for HashTable
+
 #include "hash_table.h"
+
+//============================================
+// insert
+// This function inserts a value into the hash table
+// at the specified slot based on the hash of the key.
+// PARAMETERS:
+// - data: data of to be inserted element with type T
+// - key: int that determines slot of element in the HT
+// RETURN:
+// - none
+// Precondition: No required preconditions
+// Postcondition: Ends with a Hash Table containing
+//                the inserted item at slot corresponding to key
+//============================================
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
@@ -13,6 +29,22 @@ void HashTable<T>::insert(T data, int key){
     }
     HT[slot].head=item;
 }
+
+
+//============================================
+// remove
+// This function removes a value from the hash table
+// at the specified slot based on the hash of the key.
+// PARAMETERS:
+// - key: int that determines slot of element in the HT
+//        that is to be removed
+// RETURN:
+// - none
+// Precondition: No required preconditions
+// Postcondition: Ends with a Hash Table containing
+//                all previous elements, except that with
+//                the inputted key
+//============================================
 
 template <typename T>
  void HashTable<T>::remove(int key) {
@@ -33,12 +65,38 @@ template <typename T>
             }
             currentElement = currentElement->next;
         }
- }
+}
+
+//============================================
+// hashFunc
+// This function hashes an inputted key
+// PARAMETERS:
+// - key: int that gets hashed
+// RETURN:
+// - key%m: hashed key
+// Precondition: No required preconditions
+// Postcondition: does not change the key, returns a hashed value of the key.
+//============================================
 
 template <typename T>
 int HashTable<T>::hashFunc(int key){
     return key%m;
 }
+
+
+//============================================
+// member
+// This function searches for an element with data/key
+// pair in the HT and retruns whether the element is in the HT
+// PARAMETERS:
+// - data: data of element with type T
+// - key: int that determines slot of element in the HT
+// RETURN:
+// - found: bool of whether element is in HT
+// Precondition: No required preconditions
+// Postcondition: unchanged HT, and found is whether the element was found
+//============================================
+
 
 template <typename T>
 bool HashTable<T>::member(T data, int key){
@@ -53,6 +111,18 @@ bool HashTable<T>::member(T data, int key){
     }
     return found; 
 }
+
+//============================================
+// to_string
+// This function converts the HT to a string, so it can be printed
+// or compared to expected HT
+// PARAMETERS:
+// - none
+// RETURN:
+// - HTstring: string representation of the Hash Table
+// Precondition: No required preconditions
+// Postcondition: unchanged HT, and a string representation of the HT
+//============================================
 
 template <typename T>
 string HashTable<T>::to_string(void){
