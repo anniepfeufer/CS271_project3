@@ -27,6 +27,11 @@ class Element
     T get_data(){
         return data;
     }
+
+    ~Element(){
+        delete next;
+        delete prev;
+    }
     
 };
 
@@ -56,16 +61,9 @@ class LinkedList
         head=&item;
         tail=&item;
     }
-    /*
-    ~LinkedList(){
-        Element<T>* curr=head;
-        while (curr->next!=nullptr){
-            curr=curr->next;
-            delete curr->prev;
-        }
-        delete curr;
-    }
-    */
+    
+
+
 };
 
 template<typename T>
