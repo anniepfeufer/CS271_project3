@@ -9,12 +9,14 @@ hash_table.o: hash_table.cpp
 usecase.o: usecase.cpp hash_table.o
 	g++ -c usecase.cpp
 
-usecase: usecase.o
+usecase: usecase.o main.o
 	g++ -o usecase usecase.o
 
-example_test.o: example_test.cpp hash_table.o
+example_test.o: example_test.cpp hash_table.cpp
 	g++ -c example_test.cpp
 
+main.o: main.cpp hash_table.cpp
+	g++ -c main.cpp
 clean:
 	rm -f all *.o
 
