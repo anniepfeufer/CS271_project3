@@ -56,7 +56,7 @@ class LinkedList
         head=&item;
         tail=&item;
     }
-
+    /*
     ~LinkedList(){
         Element<T>* curr=head;
         while (curr->next!=nullptr){
@@ -65,6 +65,7 @@ class LinkedList
         }
         delete curr;
     }
+    */
 };
 
 template<typename T>

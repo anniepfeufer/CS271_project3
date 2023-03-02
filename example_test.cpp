@@ -121,11 +121,11 @@ inaccurate login information" << endl;}
 */
 int main() {
     
-    //test_get_key();
-    //test_get_data();
-    //test_insert(); //SEGMENTATION FAULT
-    //test_remove(); //SEGMENTATION FAULT
-    //test_member(); //SEGMENTATION FAULT
+    test_get_key();
+    test_get_data();
+    test_insert(); 
+    test_remove(); 
+    test_member(); 
     //test_login();
     
     cout << "Testing completed" << endl;
