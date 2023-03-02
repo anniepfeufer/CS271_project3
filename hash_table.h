@@ -1,3 +1,5 @@
+//Hash Table declaration
+
 #include<iostream>
 using namespace std;
 
@@ -5,10 +7,10 @@ template <typename T>
 class Element
 {
     public:
-    T data;
+    T data; 
     int key;
-    Element<T> *next;
-    Element<T> *prev;
+    Element<T> *next; //for chaining in hash table
+    Element<T> *prev;  //for chaining in hash table
 
     Element(){
         key=-1;
@@ -34,16 +36,18 @@ class Element
     
 };
 
-//I really dont know if we need linked lists as a class but I am not at all 
-//sure how to implement an array of pointers to linked lists otherwise :(
-
+//==================================================
+// We wanted to create a LinkedList class so that for our
+// Hash Table array, we could easily store the head and tail
+// pointers in slots of the array made in HashTable class
+//==================================================
 template<typename T>
 class LinkedList
 {
     public:
     int len;
-    Element<T> *head;
-    Element<T> *tail;
+    Element<T> *head; //head of chaining for hash table
+    Element<T> *tail; //tail of chaining for hash table
 
     LinkedList(){
         len=0;
@@ -69,8 +73,8 @@ template<typename T>
 class HashTable
 {
     private:
-    int m;
-    LinkedList<T> *HT;
+    int m; //number of slots in the hash table
+    LinkedList<T> *HT; //array of linked lists
 
     public:
     HashTable(){
