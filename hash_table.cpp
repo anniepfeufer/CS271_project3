@@ -12,6 +12,7 @@ class Element
     Element<T> *prev;
 
     Element(){
+        key=-1;
         next = nullptr; 
         prev=nullptr;}
     
@@ -26,6 +27,7 @@ class Element
     T get_data(){
         return data;
     }
+    
 };
 
 //I really dont know if we need linked lists as a class but I am not at all 
@@ -53,6 +55,15 @@ class LinkedList
         len=1;
         head=&item;
         tail=&item;
+    }
+
+    ~LinkedList(){
+        Element<T>* curr=head;
+        while (curr->next!=nullptr){
+            curr=curr->next;
+            delete curr->prev;
+        }
+        delete curr;
     }
 };
 
@@ -85,17 +96,18 @@ class HashTable
 
 template <typename T>
 void HashTable<T>::insert(T data, int key){
-    Element<T> item=Element<T>(data, key);
+    Element<T> *item= new Element<T>(data, key);
     int slot=hashFunc(key);
     if (HT[slot].head!= nullptr){
-        item.next=HT[slot].head;
-        item.next->prev=&item;
+        item->next=HT[slot].head;
+        item->next->prev=item;
     }
     else{
-        HT[slot].tail=&item;
+        HT[slot].tail=item;
     }
-    HT[slot].head=&item;
+    HT[slot].head=item;
 }
+
 template <typename T>
  void HashTable<T>::remove(int key) {
         int index = hashFunc(key);
@@ -140,15 +152,15 @@ template <typename T>
 string HashTable<T>::to_string(void){
     string HTstring;
     for (int i=0; i<m; i++){
-        HTstring= HTstring + std::to_string(i)+ ":";
+        HTstring= HTstring + std::to_string(i)+ ": ";
         Element<T>* curr=HT[i].head;
         while (curr!= nullptr){
             T d=curr->data;
             int k=curr->key;
-            HTstring=HTstring + "(" +std::to_string(d)+", "+std::to_string(k)+")";
+            HTstring=HTstring + "(" +std::to_string(d)+","+std::to_string(k)+") ";
             curr=curr->next;
         }
-        if (i!=m-1){HTstring=HTstring+ "\n";}
+        HTstring=HTstring+ "\n";
     }
     return HTstring;
 }

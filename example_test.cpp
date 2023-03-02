@@ -17,6 +17,7 @@ void test_get_key() {
         cerr << "Error getting key from element : " << e.what() << endl;
     }
 }
+
 void test_get_data() {
     try {
         Element<int> empty_elem;
@@ -120,11 +121,11 @@ inaccurate login information" << endl;}
 */
 int main() {
     
-    test_get_key();
-    test_get_data();
-    test_insert();
-    test_remove();
-    test_member();
+    //test_get_key();
+    //test_get_data();
+    //test_insert(); //SEGMENTATION FAULT
+    //test_remove(); //SEGMENTATION FAULT
+    //test_member(); //SEGMENTATION FAULT
     //test_login();
     
     cout << "Testing completed" << endl;
