@@ -4,8 +4,7 @@
 using namespace std;
 
 template <typename T>
-//HashTable<T>* create_table(string fname, int m){
-int create_table(){
+HashTable<T>* create_table(string fname, int m){
     return 0;
 }
 
