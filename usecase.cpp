@@ -39,6 +39,10 @@ HashTable<T>* create_table(string fname, int m) {
 //============================================
 template <typename T>
 bool login(HashTable<T>* ht, T username, string password){
+    size_t pos = str.find_first_not_of(" ");
+
+    if (pos != std::string::npos) {
+        password.erase(0, pos);
     long pwd= stol(password);
     bool access= ht->member(username, pwd);
     return access;
