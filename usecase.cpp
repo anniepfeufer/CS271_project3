@@ -4,15 +4,22 @@
 #include <fstream>
 using namespace std;
 
+
 template <typename T>
-HashTable<T>* create_table(string fname, int m){
-    HashTable<T> *ht = new HashTable<T>(m);
-    ifstream f (fname);
+HashTable<T>* create_table(string fname, int m) {
+    HashTable<T>* ht = new HashTable<T>(m);
+    ifstream f(fname);
+    if (!f.is_open()) {
+        // handle the error here
+        delete ht;
+        return nullptr;
+    }
     T u;
     int p;
-    while (f>>u>>p){
-        ht->insert(u,p);
+    while (f >> u >> p) {
+        ht->insert(u, p);
     }
+    f.close();
     return ht;
 }
 
