@@ -1,12 +1,19 @@
 
 #include <iostream>
 #include "hash_table.cpp"
+#include <fstream>
 using namespace std;
 
 template <typename T>
 HashTable<T>* create_table(string fname, int m){
-    HashTable<T> ht= HashTable<T>(m);
-
+    HashTable<T> *ht = new HashTable<T>(m);
+    ifstream f (fname);
+    T u;
+    int p;
+    while (f>>u>>p){
+        ht->insert(u,p);
+    }
+    return ht;
 }
 
 //============================================
@@ -25,7 +32,7 @@ HashTable<T>* create_table(string fname, int m){
 //============================================
 template <typename T>
 bool login(HashTable<T>* ht, T username, string password){
-    int pwd= stoi(password);
+    long pwd= stol(password);
     bool access= ht->member(username, pwd);
     return access;
 }

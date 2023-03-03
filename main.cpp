@@ -1,21 +1,22 @@
 
 #include <iostream>
+#include <istream>
 #include "usecase.cpp"
 using namespace std;
 
 int main(){
     std::string file="logins.csv";
-    HashTable<string> *HT=create_table(file, 5);
+    HashTable<string> *HT=create_table<string>(file, 5);
 
     
     cout<<"Enter your username: ";
     string usr;
-    cin>>usr;
+    getline(cin, usr);
     cout<<endl<<"Enter your password: ";
     string pwd;
-    cin>>pwd;
+    getline(cin, pwd);
     cout<<endl;
-    bool granted= login(HT, usr, pwd);
+    bool granted= login<string>(HT, usr, pwd);
     if (granted){
         cout<<"Access Granted"<<endl;
     }
@@ -23,7 +24,6 @@ int main(){
         cout<<"Access Denied"<<endl;
     }
     
-
 
     return 0;
 }
