@@ -60,7 +60,7 @@ template <typename T>
                 if (currentElement->next != nullptr) {
                     currentElement->next->prev = currentElement->prev;
                 }
-                delete currentElement;
+                //delete currentElement;
                 return;
             }
             currentElement = currentElement->next;
@@ -133,7 +133,13 @@ string HashTable<T>::to_string(void){
         while (curr!= nullptr){
             T d=curr->data;
             int k=curr->key;
-            HTstring=HTstring + "(" +std::to_string(d)+","+std::to_string(k)+") ";
+            if (std::is_same<T, char>::value){
+                std::string s(1, d);
+                HTstring=HTstring + "(" +s+","+std::to_string(k)+") ";
+            }
+            else{
+                HTstring=HTstring + "(" +std::to_string(d)+","+std::to_string(k)+") ";
+            }
             curr=curr->next;
         }
         HTstring=HTstring+ "\n";

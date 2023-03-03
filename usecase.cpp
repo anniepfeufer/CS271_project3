@@ -5,7 +5,7 @@ using namespace std;
 
 template <typename T>
 HashTable<T>* create_table(string fname, int m){
-    HashTable(m) ht;
+    HashTable<T> ht= HashTable<T>(m);
 
 }
 

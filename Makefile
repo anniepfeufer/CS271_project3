@@ -1,7 +1,7 @@
 all: test usecase 
 
-test: example_test.o
-	g++ -o test example_test.o
+test: test_hash_table.o
+	g++ -o test test_hash_table.o
 
 hash_table.o: hash_table.cpp 
 	g++ -c hash_table.cpp
@@ -12,8 +12,8 @@ usecase.o: usecase.cpp hash_table.o
 usecase: usecase.o main.o
 	g++ -o usecase main.o
 
-example_test.o: example_test.cpp hash_table.cpp
-	g++ -c example_test.cpp
+test_hash_table.o: test_hash_table.cpp hash_table.cpp
+	g++ -c test_hash_table.cpp
 
 main.o: main.cpp usecase.cpp
 	g++ -c main.cpp

@@ -13,6 +13,7 @@ class Element
     Element<T> *prev;  //for chaining in hash table
 
     Element(){
+        data=0;
         key=-1;
         next = nullptr; 
         prev=nullptr;}
