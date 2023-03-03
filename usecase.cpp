@@ -43,6 +43,7 @@ bool login(HashTable<T>* ht, T username, string password){
 
     if (pos != std::string::npos) {
         password.erase(0, pos);
+    }
     long pwd= stol(password);
     bool access= ht->member(username, pwd);
     return access;
